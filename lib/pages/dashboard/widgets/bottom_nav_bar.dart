@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_task/app_configs/app_colors.dart';
 import 'package:flutter_web_task/pages/dashboard/dashboard_page.dart';
 
 ///
@@ -43,7 +44,9 @@ class BottomNavBar extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 6, top: 1),
                 child: Icon(
                   Icons.home,
-                  color: dashboardIndexNotifier.value == 0 ? Colors.blue : null,
+                  color: dashboardIndexNotifier.value == 0
+                      ? AppColors.brightPrimary
+                      : null,
                 ),
               ),
               label: 'Home',
@@ -53,7 +56,9 @@ class BottomNavBar extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 6, top: 1),
                 child: Icon(
                   Icons.explore,
-                  color: dashboardIndexNotifier.value == 1 ? Colors.blue : null,
+                  color: dashboardIndexNotifier.value == 1
+                      ? AppColors.brightPrimary
+                      : null,
                 ),
               ),
               label: 'Explore',
@@ -63,7 +68,9 @@ class BottomNavBar extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 6, top: 1),
                 child: Icon(
                   Icons.person,
-                  color: dashboardIndexNotifier.value == 2 ? Colors.blue : null,
+                  color: dashboardIndexNotifier.value == 2
+                      ? AppColors.brightPrimary
+                      : null,
                 ),
               ),
               label: 'Profile',

@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_web_task/global_utils/others/snackbar_helper.dart';
 import 'package:flutter_web_task/pages/dashboard/dashboard_page.dart';
 import 'package:flutter_web_task/widgets/app_primary_button.dart';
 import 'package:get/get.dart';
@@ -70,9 +71,9 @@ class LoginController extends GetxController {
             Get.offAllNamed(DashboardPage.routeName);
           }
         } else {
-          buttonKey.currentState?.hideLoader();
-
           /// invalid login
+          buttonKey.currentState?.hideLoader();
+          SnackBarHelper.show("Invalid email or password");
         }
       } catch (e) {
         buttonKey.currentState?.hideLoader();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_task/global_utils/others/app_responsiveness.dart';
 
 ///
 /// Created by Auro on 01/05/23 at 12:40 PM
@@ -83,7 +84,9 @@ class AppPrimaryButtonState extends State<AppPrimaryButton> {
               // ),
               style: ElevatedButton.styleFrom(
                 padding: widget.padding ??
-                    const EdgeInsets.symmetric(vertical: 16, horizontal: 48),
+                    EdgeInsets.symmetric(
+                        vertical: AppResponsive.isMobile(context) ? 16 : 20,
+                        horizontal: 48),
                 elevation: 0,
                 foregroundColor: Colors.white,
                 backgroundColor: widget.color,
