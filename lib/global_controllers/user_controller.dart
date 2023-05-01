@@ -6,20 +6,12 @@ import 'package:get/get.dart';
 ///
 
 class UserController extends GetxController with StateMixin<User?> {
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  //
-  //   final user = SharedPreferenceHelper.user?.user;
-  //   change(user, status: user == null ? RxStatus.empty() : RxStatus.success());
-  // }
-
   updateUser(User? user) {
     if (user == null) {
-      change(null, status: RxStatus.success());
+      change(GetStatus.success(null));
       return;
     }
-    change(null, status: RxStatus.loading());
-    change(user, status: RxStatus.success());
+    change(GetStatus.loading());
+    change(GetStatus.success(user));
   }
 }

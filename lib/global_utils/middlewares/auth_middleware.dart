@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_task/global_controllers/user_controller.dart';
 import 'package:flutter_web_task/global_utils/shared_preferences/shared_preferences_helper.dart';
@@ -11,6 +12,7 @@ import 'package:get/get.dart';
 class AuthCheckMiddleware extends GetMiddleware {
   @override
   RouteSettings? redirect(String? route) {
+    log("Checking in AuthMiddleware");
     final token = SharedPreferenceHelper.accessToken;
     if (token != null) {
       final userController = Get.isRegistered<UserController>()
@@ -18,12 +20,17 @@ class AuthCheckMiddleware extends GetMiddleware {
           : Get.put<UserController>(UserController(), permanent: true);
       final user = userController.state;
       if (user == null) {
-        return const RouteSettings(name: LoginPage.routeName);
+        log("RouteSettings : Login");
+        return RouteSettings(
+            name: LoginPage.routeName, arguments: {"redirectPath": route});
       } else {
+        log("RouteSettings :- $route");
         return RouteSettings(name: route);
       }
     } else {
-      return const RouteSettings(name: LoginPage.routeName);
+      log("RouteSettings : Login");
+      return RouteSettings(
+          name: LoginPage.routeName, arguments: {"redirectPath": route});
     }
   }
 }
